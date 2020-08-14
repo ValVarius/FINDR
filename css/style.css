@@ -169,7 +169,7 @@ header {
 
 #patch {
     position: absolute;
-    width: 1000px;
+    width: 2000px;
     height: 1000px;
     z-index: 1;
     background-color: #cdcdcd;
