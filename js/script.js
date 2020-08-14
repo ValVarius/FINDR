@@ -34,6 +34,7 @@ var map;
             console.log(`city Id is ${ID}`);
 
             QueryURL = 'https://developers.zomato.com/api/v2.1/search?entity_id=' + ID + '&entity_type=city&count=100&radius=8000'
+
             GetRestaurantData(QueryURL)            
         })
     }
@@ -51,6 +52,7 @@ var map;
             cityID = parseInt((response.location_suggestions[0].id))
             console.log(cityID)
             QueryURL = 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city&count=100&radius=' + radius;
+            
             console.log("url = " +QueryURL);
             GetRestaurantData(QueryURL)
         })
@@ -66,20 +68,25 @@ var map;
                 "user-key": zomatoKey
             },
         }).then(function (response) {
+            console.log(response);
             $("#pictureDisplay").show();
 
             var i = Math.floor(Math.random() * response.restaurants.length);
-            var x = Math.floor(Math.random() * 9);
+            // var x = Math.floor(Math.random() * 9);
 
+            
             var rest = response.restaurants[i].restaurant;
 
-            var restPic = rest.photos[x].photo.url;
+            // var restPic = rest.photos[x].photo.url;
+            // restPic = response.restaurants[i].restaurant.photos_url
+            restPic = rest.featured_image
+            console.log(restPic);
 
             $("#pictureNext").attr("src", restPic);
-            console.log(response);
+            
 
-            $("#pictureDisplay").fadeOut("slow");
-            $("#pictureNext").fadeIn("slow");
+            $("#pictureDisplay").hide()
+            $("#pictureNext").fadeIn("3000");
             $("#pictureDisplay").attr("src", restPic);
 
             // if the No button is clicked
