@@ -14,6 +14,7 @@ var map;
         }).then(function (response) {
             lat = response.location.lat
             lng = response.location.lng
+            console.log(lat, lng);
             var queryURLinput = 'https://developers.zomato.com/api/v2.1/geocode?lat=' + lat + '&lon=' + lng;
 
             GetGEOData(queryURLinput)
@@ -30,7 +31,7 @@ var map;
             },
         }).then(function (response) {
             var ID = response.location.city_id
-
+            console.log(`city Id is ${ID}`);
 
             QueryURL = 'https://developers.zomato.com/api/v2.1/search?entity_id=' + ID + '&entity_type=city&count=100&radius=8000'
             GetRestaurantData(QueryURL)            
